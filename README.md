@@ -75,7 +75,7 @@ BookBazaar/
 ### 2. Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/bookbazaar.git
+   git clone https://github.com/Basel-Amr/Capstone-Project-BookBazaar-Pro.git
    cd bookbazaar
    ```
 2. Configure the database:
