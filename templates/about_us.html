@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="about-us">
+        <h1>About Us</h1>
+        <p>We are Team 1 from Sprints, and we are excited to introduce BookBazaar to you!</p>
+        <p><strong>Our team members:</strong></p>
+        <ul>
+            <li>Menna Mohamed</li>
+            <li>Dina Fakhry</li>
+            <li>Abanoub Younan</li>
+            <li>Karen Emad</li>
+            <li>Basel Amr</li>
+            <li>Ahmed Hesham</li>
+        </ul>
+    </div>
+
+    <style>
+        /* About Us Section */
+        .about-us {
+            padding: 40px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            width: 80%; /* Set width for better structure */
+            margin-left: auto; /* Align left */
+            margin-right: auto; /* Align right */
+        }
+        .about-us h1 {
+            font-size: 3em;
+            color: #333;
+            text-align: left; /* Align heading to the left */
+        }
+        .about-us p {
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 20px;
+            text-align: left; /* Align text to the left */
+        }
+        .about-us strong {
+            font-weight: bold; /* Ensure the team members label is bold */
+        }
+        .about-us ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 1.1em;
+            color: #333;
+            text-align: left; /* Align the list to the left */
+        }
+        .about-us li {
+            margin: 10px 0;
+        }
+    </style>
+{% endblock %}

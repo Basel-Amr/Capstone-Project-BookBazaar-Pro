@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BookBazaar{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <!-- Brand Logo -->
+        <a href="{{ url_for('main.home') }}">
+            <img src="{{ url_for('static', filename='sprints_logo.png') }}" alt="BookBazaar Logo" class="logo" loading="lazy">
+        </a>
+
+        <!-- Navigation Menu -->
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('main.home') }}" class="{% if request.endpoint == 'main.home' %}active{% endif %}">Home</a></li>
+                <li><a href="{{ url_for('main.about_us') }}" class="{% if request.endpoint == 'main.about_us' %}active{% endif %}">About Us</a></li>
+                <li><a href="{{ url_for('main.dashboard') }}" class="{% if request.endpoint == 'main.dashboard' %}active{% endif %}">Dashboard</a></li>
+                <li><a href="{{ url_for('main.profile') }}" class="{% if request.endpoint == 'main.profile' %}active{% endif %}">Profile</a></li>
+                <li><a href="{{ url_for('main.order_history') }}" class="{% if request.endpoint == 'main.order_history' %}active{% endif %}">Order History</a></li>
+                <li><a href="{{ url_for('user.get_users') }}" class="{% if request.endpoint == 'user.get_users' %}active{% endif %}">Users</a></li>
+                <li><a href="{{ url_for('author.get_authors') }}" class="{% if request.endpoint == 'author.get_authors' %}active{% endif %}">Authors</a></li>
+                <li><a href="{{ url_for('sales.get_sales') }}" class="{% if request.endpoint == 'sales.get_sales' %}active{% endif %}">Sales</a></li>
+                <li><a href="{{ url_for('book.get_books') }}" class="{% if request.endpoint == 'book.get_books' %}active{% endif %}">Books</a></li>
+                <li><a href="{{ url_for('inventory.get_inventories') }}" class="{% if request.endpoint == 'inventory.get_inventories' %}active{% endif %}">Inventory</a></li>
+                <li><a href="{{ url_for('country.get_countries') }}" class="{% if request.endpoint == 'country.get_countries' %}active{% endif %}">Countries</a></li>
+                <li><a href="{{ url_for('discount.get_discounts') }}" class="{% if request.endpoint == 'discount.get_discounts' %}active{% endif %}">Discounts</a></li>
+                <li><a href="{{ url_for('review.get_all_reviews_route') }}" class="{% if request.endpoint == 'review.get_all_reviews_route' %}active{% endif %}">Reviews</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

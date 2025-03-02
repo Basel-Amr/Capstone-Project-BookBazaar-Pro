@@ -1,0 +1,5210 @@
+{
+	"info": {
+		"_postman_id": "336ad14e-6b1b-4af1-aac9-abd795424f7b",
+		"name": "REST API basics: CRUD, test & variable",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40986400"
+	},
+	"item": [
+		{
+			"name": "GET All Records",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "GET All Users",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 13:37:32 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3188"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"CountryName\": \"Egypt\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"ahmed@gmail.com\",\n        \"Password\": \"password123\",\n        \"Role\": \"customer\",\n        \"UserID\": 1,\n        \"UserName\": \"Ahmed Hesham\"\n    },\n    {\n        \"CountryName\": \"Egypt\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"abanoub@gmailcom\",\n        \"Password\": \"password123\",\n        \"Role\": \"admin\",\n        \"UserID\": 4,\n        \"UserName\": \"Abanoub\"\n    },\n    {\n        \"CountryName\": \"Egypt\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"Kerols@gmail.com\",\n        \"Password\": \"password123\",\n        \"Role\": \"customer\",\n        \"UserID\": 5,\n        \"UserName\": \"Kerols\"\n    },\n    {\n        \"CountryName\": \"United Kingdom\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"hans@gmail.com\",\n        \"Password\": \"password123\",\n        \"Role\": \"customer\",\n        \"UserID\": 6,\n        \"UserName\": \"hans_Kingdom\"\n    },\n    {\n        \"CountryName\": \"Saudi Arabia\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"ahmeduser@gmail.com\",\n        \"Password\": \"password123\",\n        \"Role\": \"customer\",\n        \"UserID\": 7,\n        \"UserName\": \"ahmed_user\"\n    },\n    {\n        \"CountryName\": \"Lebanon\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"nada2@gmail.com\",\n        \"Password\": \"password123\",\n        \"Role\": \"admin\",\n        \"UserID\": 8,\n        \"UserName\": \"nada_user\"\n    },\n    {\n        \"CountryName\": \"United Kingdom\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"john@gmail.com\",\n        \"Password\": \"password123\",\n        \"Role\": \"customer\",\n        \"UserID\": 9,\n        \"UserName\": \"john_doe\"\n    },\n    {\n        \"CountryName\": \"United Kingdom\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"maria@gmail.com\",\n        \"Password\": \"password123\",\n        \"Role\": \"admin\",\n        \"UserID\": 10,\n        \"UserName\": \"maria_smith\"\n    },\n    {\n        \"CountryName\": \"France\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"francois@egmail.com\",\n        \"Password\": \"password123\",\n        \"Role\": \"customer\",\n        \"UserID\": 11,\n        \"UserName\": \"francois\"\n    },\n    {\n        \"CountryName\": \"Lebanon\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"hans22@egmail.com\",\n        \"Password\": \"password123\",\n        \"Role\": \"customer\",\n        \"UserID\": 12,\n        \"UserName\": \"hans_Lebanon\"\n    },\n    {\n        \"CountryName\": \"India\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"handIndia@gmail.com\",\n        \"Password\": \"password1234\",\n        \"Role\": \"customer\",\n        \"UserID\": 13,\n        \"UserName\": \"hans_India\"\n    },\n    {\n        \"CountryName\": \"China\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"handChina@gmail.com\",\n        \"Password\": \"password1234\",\n        \"Role\": \"customer\",\n        \"UserID\": 14,\n        \"UserName\": \"hans_China\"\n    },\n    {\n        \"CountryName\": \"Germany\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"handGermany@gmail.com\",\n        \"Password\": \"password1234\",\n        \"Role\": \"customer\",\n        \"UserID\": 15,\n        \"UserName\": \"hans_Germany\"\n    },\n    {\n        \"CountryName\": \"United States\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"handStates@gmail.com\",\n        \"Password\": \"password1234\",\n        \"Role\": \"customer\",\n        \"UserID\": 16,\n        \"UserName\": \"hans_States\"\n    },\n    {\n        \"CountryName\": \"Japan\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"handJapan@gmail.com\",\n        \"Password\": \"password1234\",\n        \"Role\": \"customer\",\n        \"UserID\": 17,\n        \"UserName\": \"hans_Japain\"\n    },\n    {\n        \"CountryName\": \"France\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"Henry@gmail.com\",\n        \"Password\": \"password1234\",\n        \"Role\": \"customer\",\n        \"UserID\": 18,\n        \"UserName\": \"Henry\"\n    },\n    {\n        \"CountryName\": \"France\",\n        \"Created_At\": \"2025-01-11 01:50:50\",\n        \"Email\": \"Kounde@gmail.com\",\n        \"Password\": \"password1234\",\n        \"Role\": \"customer\",\n        \"UserID\": 19,\n        \"UserName\": \"Kounde\"\n    },\n    {\n        \"CountryName\": \"Egypt\",\n        \"Created_At\": \"2025-01-12 17:49:43\",\n        \"Email\": \"john.doe@gmail.com\",\n        \"Password\": \"user1234\",\n        \"Role\": \"customer\",\n        \"UserID\": 20,\n        \"UserName\": \"John Doe\"\n    },\n    {\n        \"CountryName\": \"Egypt\",\n        \"Created_At\": \"2025-01-12 22:38:47\",\n        \"Email\": \"john2.doe@221gmail.com\",\n        \"Password\": \"user123214\",\n        \"Role\": \"customer\",\n        \"UserID\": 21,\n        \"UserName\": \"Johnss Doe\"\n    }\n]"
+				},
+				{
+					"name": "Get All Authors",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/Authors",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"Authors"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 15:53:50 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "912"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"AuthorID\": 1,\n        \"Bio\": \"Egyptian novelist, Nobel Prize winner\",\n        \"Birth_Date\": \"1911-12-11\",\n        \"CountryName\": \"Egypt\",\n        \"First_Name\": \"Naguib\",\n        \"Last_Name\": \"Mahfouz\"\n    },\n    {\n        \"AuthorID\": 2,\n        \"Bio\": \"Egyptian novelist, Nobel Prize winner\",\n        \"Birth_Date\": \"1911-12-11\",\n        \"CountryName\": \"Egypt\",\n        \"First_Name\": \"update_fristname\",\n        \"Last_Name\": \"update_secondname\"\n    },\n    {\n        \"AuthorID\": 3,\n        \"Bio\": \"English novelist and essayist\",\n        \"Birth_Date\": \"1903-06-25\",\n        \"CountryName\": \"United Kingdom\",\n        \"First_Name\": \"George\",\n        \"Last_Name\": \"Orwell\"\n    },\n    {\n        \"AuthorID\": 5,\n        \"Bio\": \"French philosopher and author\",\n        \"Birth_Date\": \"1913-11-07\",\n        \"CountryName\": \"France\",\n        \"First_Name\": \"Albert\",\n        \"Last_Name\": \"Camus\"\n    },\n    {\n        \"AuthorID\": 6,\n        \"Bio\": \"Egyptian writer and intellectual\",\n        \"Birth_Date\": \"1889-11-14\",\n        \"CountryName\": \"Saudi Arabia\",\n        \"First_Name\": \"Taha\",\n        \"Last_Name\": \"Hussein\"\n    },\n    {\n        \"AuthorID\": 7,\n        \"Bio\": \"An Egyptian new Author\",\n        \"Birth_Date\": \"1990-1-1\",\n        \"CountryName\": \"Egypt\",\n        \"First_Name\": \"Ahmed\",\n        \"Last_Name\": \"Khalil\"\n    }\n]"
+				},
+				{
+					"name": "GET All Sales",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 15:55:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1100"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[{\"BookID\":3,\"CountryName\":\"United Kingdom\",\"SaleID\":3,\"Sale_Date\":\"2025-01-03\",\"Sale_Quantity\":7,\"Total_Price\":111.93,\"UserID\":3},{\"BookID\":3,\"CountryName\":\"Saudi Arabia\",\"SaleID\":4,\"Sale_Date\":\"2025-01-03\",\"Sale_Quantity\":722,\"Total_Price\":111.93,\"UserID\":3},{\"BookID\":5,\"CountryName\":\"France\",\"SaleID\":5,\"Sale_Date\":\"2025-01-05\",\"Sale_Quantity\":4,\"Total_Price\":55.96,\"UserID\":5},{\"BookID\":6,\"CountryName\":\"Germany\",\"SaleID\":6,\"Sale_Date\":\"2025-01-06\",\"Sale_Quantity\":8,\"Total_Price\":71.92,\"UserID\":6},{\"BookID\":7,\"CountryName\":\"Germany\",\"SaleID\":7,\"Sale_Date\":\"2025-01-06\",\"Sale_Quantity\":10,\"Total_Price\":71.92,\"UserID\":6},{\"BookID\":2,\"CountryName\":\"Egypt\",\"SaleID\":8,\"Sale_Date\":\"2025-01-01\",\"Sale_Quantity\":5,\"Total_Price\":64.95,\"UserID\":1},{\"BookID\":2,\"CountryName\":NaN,\"SaleID\":9,\"Sale_Date\":\"2025-01-01\",\"Sale_Quantity\":5,\"Total_Price\":64.95,\"UserID\":1},{\"BookID\":2,\"CountryName\":NaN,\"SaleID\":10,\"Sale_Date\":\"2025-01-01\",\"Sale_Quantity\":5,\"Total_Price\":64.95,\"UserID\":1},{\"BookID\":250,\"CountryName\":NaN,\"SaleID\":11,\"Sale_Date\":\"2025-01-01\",\"Sale_Quantity\":5,\"Total_Price\":64.95,\"UserID\":1}]\n"
+				},
+				{
+					"name": "GET All Books",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/books",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 15:56:38 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1322"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"AuthorID\": 4,\n        \"BookID\": 4,\n        \"Description\": \"The first Harry Potter book\",\n        \"Genre\": \"Comedy 12 12\",\n        \"ISBN\": \"1550929890\",\n        \"Price\": 20.99,\n        \"Publication_Year\": 19972,\n        \"Rating\": 4.9,\n        \"Title\": \"temp\"\n    },\n    {\n        \"AuthorID\": 5,\n        \"BookID\": 5,\n        \"Description\": \"A novel about human resilience\",\n        \"Genre\": \"Philosophy\",\n        \"ISBN\": \"2572902823\",\n        \"Price\": 13.99,\n        \"Publication_Year\": 1947,\n        \"Rating\": 4.6,\n        \"Title\": \"The Plague\"\n    },\n    {\n        \"AuthorID\": 6,\n        \"BookID\": 6,\n        \"Description\": \"A memoir by Taha Hussein\",\n        \"Genre\": \"Biography\",\n        \"ISBN\": \"5394649133\",\n        \"Price\": 8.99,\n        \"Publication_Year\": 1929,\n        \"Rating\": 4.3,\n        \"Title\": \"El-Ayam\"\n    },\n    {\n        \"AuthorID\": 3,\n        \"BookID\": 7,\n        \"Description\": \"A satirical novella by George Orwell\",\n        \"Genre\": \"Satire\",\n        \"ISBN\": \"2753192768\",\n        \"Price\": 10.99,\n        \"Publication_Year\": 1945,\n        \"Rating\": 4.5,\n        \"Title\": \"Animal Farm\"\n    },\n    {\n        \"AuthorID\": 4,\n        \"BookID\": 8,\n        \"Description\": \"The second Harry Potter book\",\n        \"Genre\": \"Fantasy\",\n        \"ISBN\": \"6763662387\",\n        \"Price\": 21.99,\n        \"Publication_Year\": 1998,\n        \"Rating\": 4.8,\n        \"Title\": \"Harry Potter and the Chamber of Secrets\"\n    },\n    {\n        \"AuthorID\": 5,\n        \"BookID\": 9,\n        \"Description\": \"A novel by Albert Camus\",\n        \"Genre\": \"Philosophy\",\n        \"ISBN\": \"8418542958\",\n        \"Price\": 11.99,\n        \"Publication_Year\": 1942,\n        \"Rating\": 4.4,\n        \"Title\": \"L’Étranger\"\n    },\n    {\n        \"AuthorID\": 4,\n        \"BookID\": 10,\n        \"Description\": \"The first Harry Potter book\",\n        \"Genre\": \"Updated Genre\",\n        \"ISBN\": \"2403208727\",\n        \"Price\": 20.99,\n        \"Publication_Year\": 19972,\n        \"Rating\": 4.9,\n        \"Title\": \"Updated Title\"\n    }\n]"
+				},
+				{
+					"name": "GET All Inventories",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AuthorID\": 4,\r\n    \"Description\": \"The first Harry Potter book\",\r\n    \"Genre\": \"Updated Genre\",\r\n    \"Price\": 20.99,\r\n    \"Publication_Year\": 19972,\r\n    \"Rating\": 4.9,\r\n    \"Title\": \"Updated Title\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/inventory",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 15:49:30 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1520"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"BookID\": 1,\n        \"CountryName\": \"Egypt\",\n        \"InventoryID\": 1,\n        \"Restock_Date\": \"2025-01-01\",\n        \"Stock_Quantity\": 65,\n        \"Warehouse_Location\": \"Warehouse A\"\n    },\n    {\n        \"BookID\": 3,\n        \"CountryName\": \"United Kingdom\",\n        \"InventoryID\": 3,\n        \"Restock_Date\": \"2025-01-10\",\n        \"Stock_Quantity\": 15,\n        \"Warehouse_Location\": \"Warehouse C\"\n    },\n    {\n        \"BookID\": 4,\n        \"CountryName\": \"United Kingdom\",\n        \"InventoryID\": 4,\n        \"Restock_Date\": \"2025-01-07\",\n        \"Stock_Quantity\": 19,\n        \"Warehouse_Location\": \"Warehouse D\"\n    },\n    {\n        \"BookID\": 5,\n        \"CountryName\": \"France\",\n        \"InventoryID\": 5,\n        \"Restock_Date\": \"2025-01-15\",\n        \"Stock_Quantity\": 31,\n        \"Warehouse_Location\": \"Warehouse E\"\n    },\n    {\n        \"BookID\": 6,\n        \"CountryName\": \"Germany\",\n        \"InventoryID\": 6,\n        \"Restock_Date\": \"2025-01-20\",\n        \"Stock_Quantity\": 32,\n        \"Warehouse_Location\": \"Warehouse F\"\n    },\n    {\n        \"BookID\": 7,\n        \"CountryName\": \"Lebanon\",\n        \"InventoryID\": 7,\n        \"Restock_Date\": \"2025-01-25\",\n        \"Stock_Quantity\": 40,\n        \"Warehouse_Location\": \"Warehouse G\"\n    },\n    {\n        \"BookID\": 8,\n        \"CountryName\": \"United States\",\n        \"InventoryID\": 8,\n        \"Restock_Date\": \"2025-01-30\",\n        \"Stock_Quantity\": 10,\n        \"Warehouse_Location\": \"Warehouse H\"\n    },\n    {\n        \"BookID\": 9,\n        \"CountryName\": \"France\",\n        \"InventoryID\": 9,\n        \"Restock_Date\": \"2025-02-01\",\n        \"Stock_Quantity\": 15,\n        \"Warehouse_Location\": \"Warehouse I\"\n    },\n    {\n        \"BookID\": 10,\n        \"CountryName\": \"Egypt\",\n        \"InventoryID\": 10,\n        \"Restock_Date\": \"2025-02-05\",\n        \"Stock_Quantity\": 20,\n        \"Warehouse_Location\": \"Warehouse J\"\n    },\n    {\n        \"BookID\": 1,\n        \"CountryName\": \"Egypt\",\n        \"InventoryID\": 11,\n        \"Restock_Date\": \"2025-02-05\",\n        \"Stock_Quantity\": 17,\n        \"Warehouse_Location\": \"Warehouse K\"\n    },\n    {\n        \"BookID\": 1,\n        \"CountryName\": \"Saudi Arabia\",\n        \"InventoryID\": 12,\n        \"Restock_Date\": \"2025-01-01\",\n        \"Stock_Quantity\": 12,\n        \"Warehouse_Location\": \"Warehouse CC\"\n    }\n]"
+				},
+				{
+					"name": "GET All Countries",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AuthorID\": 4,\r\n    \"Description\": \"The first Harry Potter book\",\r\n    \"Genre\": \"Updated Genre\",\r\n    \"Price\": 20.99,\r\n    \"Publication_Year\": 19972,\r\n    \"Rating\": 4.9,\r\n    \"Title\": \"Updated Title\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/country",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"country"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 15:52:46 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "608"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"CountryID\": 1,\n        \"Country_Name\": \"Egypt\",\n        \"Region\": \"Africa\"\n    },\n    {\n        \"CountryID\": 3,\n        \"Country_Name\": \"Lebanon\",\n        \"Region\": \"Middle East\"\n    },\n    {\n        \"CountryID\": 4,\n        \"Country_Name\": \"United States\",\n        \"Region\": \"North America\"\n    },\n    {\n        \"CountryID\": 5,\n        \"Country_Name\": \"France\",\n        \"Region\": \"Europe\"\n    },\n    {\n        \"CountryID\": 6,\n        \"Country_Name\": \"Germany\",\n        \"Region\": \"Europe\"\n    },\n    {\n        \"CountryID\": 7,\n        \"Country_Name\": \"United Kingdom\",\n        \"Region\": \"Europe\"\n    },\n    {\n        \"CountryID\": 8,\n        \"Country_Name\": \"Japan\",\n        \"Region\": \"Asia\"\n    },\n    {\n        \"CountryID\": 9,\n        \"Country_Name\": \"China\",\n        \"Region\": \"Asia\"\n    },\n    {\n        \"CountryID\": 10,\n        \"Country_Name\": \"India\",\n        \"Region\": \"Asia\"\n    },\n    {\n        \"CountryID\": 11,\n        \"Country_Name\": \"Suadia Arabia\",\n        \"Region\": \"Asia\"\n    }\n]"
+				},
+				{
+					"name": "GET All Discounts",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/discount",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"discount"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 15:54:41 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1081"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"BookID\": 2,\n        \"Created_At\": \"2025-01-12\",\n        \"Description\": \"Summer Sale \",\n        \"DiscountID\": 2,\n        \"UserID\": 2,\n        \"Valid_From\": \"2025-01-05\",\n        \"Valid_To\": \"2025-01-15\",\n        \"Value\": 0.15\n    },\n    {\n        \"BookID\": 3,\n        \"Created_At\": \"2025-01-07\",\n        \"Description\": \"Black Friday \",\n        \"DiscountID\": 3,\n        \"UserID\": 3,\n        \"Valid_From\": \"2025-01-07\",\n        \"Valid_To\": \"2025-01-14\",\n        \"Value\": 0.2\n    },\n    {\n        \"BookID\": 4,\n        \"Created_At\": \"2025-01-08\",\n        \"Description\": null,\n        \"DiscountID\": 4,\n        \"UserID\": 4,\n        \"Valid_From\": \"2025-01-08\",\n        \"Valid_To\": \"2025-01-20\",\n        \"Value\": 0.25\n    },\n    {\n        \"BookID\": 5,\n        \"Created_At\": \"2025-01-10\",\n        \"Description\": \"Black Friday \",\n        \"DiscountID\": 5,\n        \"UserID\": 5,\n        \"Valid_From\": \"2025-01-10\",\n        \"Valid_To\": \"2025-01-25\",\n        \"Value\": 0.3\n    },\n    {\n        \"BookID\": 6,\n        \"Created_At\": \"2025-01-12\",\n        \"Description\": null,\n        \"DiscountID\": 6,\n        \"UserID\": 6,\n        \"Valid_From\": \"2025-01-12\",\n        \"Valid_To\": \"2025-01-18\",\n        \"Value\": 0.05\n    },\n    {\n        \"BookID\": 2,\n        \"Created_At\": \"2025-01-05\",\n        \"Description\": \"Summer Sale \",\n        \"DiscountID\": 7,\n        \"UserID\": 2,\n        \"Valid_From\": \"2025-01-05\",\n        \"Valid_To\": \"2025-01-15\",\n        \"Value\": 0.15\n    },\n    {\n        \"BookID\": 5,\n        \"Created_At\": \"2025-01-10\",\n        \"Description\": \"White Friday \",\n        \"DiscountID\": 8,\n        \"UserID\": 5,\n        \"Valid_From\": \"2025-01-10\",\n        \"Valid_To\": \"2025-01-25\",\n        \"Value\": 0.3\n    }\n]"
+				},
+				{
+					"name": "GET All Reviews",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/reviews/all",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"reviews",
+								"all"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 15:57:49 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1320"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"reviews\": [\n        {\n            \"_id\": \"678504b8c95c2024bb787ef4\",\n            \"author\": \"Nils J. Nilsson\",\n            \"book_id\": \"002\",\n            \"comment\": \"Comprehensive coverage of AI topics, but can be dense at times.\",\n            \"rating\": 4,\n            \"title\": \"Artificial Intelligence: A New Synthesis\",\n            \"user\": \"Noha\"\n        },\n        {\n            \"_id\": \"678504b8c95c2024bb787ef5\",\n            \"author\": \"Kai-Fu Lee\",\n            \"book_id\": \"003\",\n            \"comment\": \"Insightful discussion on AI's global impact and future trends.\",\n            \"rating\": 5,\n            \"title\": \"AI Superpowers: China, Silicon Valley, and the New World Order\",\n            \"user\": \"Sarah\"\n        },\n        {\n            \"_id\": \"678504b8c95c2024bb787ef6\",\n            \"author\": \"Ian Goodfellow, Yoshua Bengio, Aaron Courville\",\n            \"book_id\": \"004\",\n            \"comment\": \"A must-read for anyone diving deep into neural networks and deep learning.\",\n            \"rating\": 5,\n            \"title\": \"Deep Learning\",\n            \"user\": \"Noha\"\n        },\n        {\n            \"_id\": \"678504b8c95c2024bb787ef7\",\n            \"author\": \"Stuart Russell\",\n            \"book_id\": \"005\",\n            \"comment\": \"Thought-provoking discussion on AI ethics and control.\",\n            \"rating\": 4,\n            \"title\": \"Human Compatible: Artificial Intelligence and the Problem of Control\",\n            \"user\": \"Ali\"\n        },\n        {\n            \"_id\": \"67854a817dcf2365b70ef282\",\n            \"author\": \"John Doe\",\n            \"book_id\": \"001\",\n            \"comment\": \"A detailed book on AI principles.\",\n            \"rating\": 4,\n            \"title\": \"AI Fundamentals\",\n            \"user\": \"Jane\"\n        },\n        {\n            \"_id\": \"67854abb7dcf2365b70ef283\",\n            \"author\": \"John Doe\",\n            \"book_id\": \"001\",\n            \"comment\": \"A detailed book on AI principles.\",\n            \"rating\": 42,\n            \"title\": \"AI Fundamentals\",\n            \"user\": \"Jane\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "GET Specfic Records Exists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "GET User <user_id=1>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:07:02 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "132"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"CountryID\": 1,\n    \"Created_At\": \"2025-01-11 01:50:50\",\n    \"Email\": \"ahmed@gmail.com\",\n    \"Role\": \"customer\",\n    \"UserID\": 1,\n    \"UserName\": \"Ahmed Hesham\"\n}"
+				},
+				{
+					"name": "GET Author <author_id=5>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/authors/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"authors",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:12:17 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "135"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"AuthorID\": 5,\n    \"Bio\": \"French philosopher and author\",\n    \"Birth_Date\": \"1913-11-07\",\n    \"CountryID\": 5,\n    \"First_Name\": \"Albert\",\n    \"Last_Name\": \"Camus\"\n}"
+				},
+				{
+					"name": "GET Sale <sale_id=5>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:14:51 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "101"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"BookID\": 5,\n    \"CountryID\": 5,\n    \"Sale_Date\": \"2025-01-05\",\n    \"Sale_Quantity\": 4,\n    \"Total_Price\": 55.96,\n    \"UserID\": 5\n}"
+				},
+				{
+					"name": "GET Book <book_id=8>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/books/8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"books",
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:15:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "210"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"AuthorID\": 4,\n    \"BookID\": 8,\n    \"Description\": \"The second Harry Potter book\",\n    \"Genre\": \"Fantasy\",\n    \"ISBN\": \"6763662387\",\n    \"Price\": 21.99,\n    \"Publication_Year\": 1998,\n    \"Rating\": 4.8,\n    \"Title\": \"Harry Potter and the Chamber of Secrets\"\n}"
+				},
+				{
+					"name": "GET Inventory <inventory_id=10>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AuthorID\": 4,\r\n    \"Description\": \"The first Harry Potter book\",\r\n    \"Genre\": \"Updated Genre\",\r\n    \"Price\": 20.99,\r\n    \"Publication_Year\": 19972,\r\n    \"Rating\": 4.9,\r\n    \"Title\": \"Updated Title\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/inventory/10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory",
+								"10"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:00:04 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "97"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"BookID\": 10,\n    \"Restock_Date\": \"2025-02-05\",\n    \"Stock_Quantity\": 20,\n    \"Warehouse_Location\": \"Warehouse J\"\n}"
+				},
+				{
+					"name": "GET Country <country_id=1>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AuthorID\": 4,\r\n    \"Description\": \"The first Harry Potter book\",\r\n    \"Genre\": \"Updated Genre\",\r\n    \"Price\": 20.99,\r\n    \"Publication_Year\": 19972,\r\n    \"Rating\": 4.9,\r\n    \"Title\": \"Updated Title\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/country/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"country",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:20:30 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Country_Name\": \"Egypt\",\n    \"Region\": \"Africa\"\n}"
+				},
+				{
+					"name": "GET Discount <discount_id=5>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/discount/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"discount",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:21:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "157"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"BookID\": 5,\n    \"Created_At\": \"2025-01-10\",\n    \"Description\": \"Black Friday \",\n    \"DiscountID\": 5,\n    \"UserID\": 5,\n    \"Valid_From\": \"2025-01-10\",\n    \"Valid_To\": \"2025-01-25\",\n    \"Value\": 0.3\n}"
+				},
+				{
+					"name": "GET Review <_id=678504b8c95c2024bb787ef6>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/reviews/678504b8c95c2024bb787ef6",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"reviews",
+								"678504b8c95c2024bb787ef6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:22:46 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "245"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"678504b8c95c2024bb787ef6\",\n    \"author\": \"Ian Goodfellow, Yoshua Bengio, Aaron Courville\",\n    \"book_id\": \"004\",\n    \"comment\": \"A must-read for anyone diving deep into neural networks and deep learning.\",\n    \"rating\": 5,\n    \"title\": \"Deep Learning\",\n    \"user\": \"Noha\"\n}"
+				},
+				{
+					"name": "GET Review <book_id=001>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/reviews/book/001",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"reviews",
+								"book",
+								"001"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:24:02 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "339"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"67854a817dcf2365b70ef282\",\n        \"author\": \"John Doe\",\n        \"book_id\": \"001\",\n        \"comment\": \"A detailed book on AI principles.\",\n        \"rating\": 4,\n        \"title\": \"AI Fundamentals\",\n        \"user\": \"Jane\"\n    },\n    {\n        \"_id\": \"67854abb7dcf2365b70ef283\",\n        \"author\": \"John Doe\",\n        \"book_id\": \"001\",\n        \"comment\": \"A detailed book on AI principles.\",\n        \"rating\": 42,\n        \"title\": \"AI Fundamentals\",\n        \"user\": \"Jane\"\n    }\n]"
+				},
+				{
+					"name": "GET Review <book_id=002>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/reviews/book/002",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"reviews",
+								"book",
+								"002"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:24:50 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "232"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"678504b8c95c2024bb787ef4\",\n        \"author\": \"Nils J. Nilsson\",\n        \"book_id\": \"002\",\n        \"comment\": \"Comprehensive coverage of AI topics, but can be dense at times.\",\n        \"rating\": 4,\n        \"title\": \"Artificial Intelligence: A New Synthesis\",\n        \"user\": \"Noha\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "GET Specfic Records Not Exists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "GET User <user_id=111>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/111",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"111"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:26:04 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "44"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 111 not found.\"\n}"
+				},
+				{
+					"name": "GET Author <author_id=50>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/authors/50",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"authors",
+								"50"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:30:09 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 50 not found.\"\n}"
+				},
+				{
+					"name": "GET Sale <sale_id=52>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales/52",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales",
+								"52"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:30:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 52 not found.\"\n}"
+				},
+				{
+					"name": "GET Book <book_id=80>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/books/80",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"books",
+								"80"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:31:30 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 80 not found.\"\n}"
+				},
+				{
+					"name": "GET Inventory <inventory_id=100>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AuthorID\": 4,\r\n    \"Description\": \"The first Harry Potter book\",\r\n    \"Genre\": \"Updated Genre\",\r\n    \"Price\": 20.99,\r\n    \"Publication_Year\": 19972,\r\n    \"Rating\": 4.9,\r\n    \"Title\": \"Updated Title\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/inventory/100",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory",
+								"100"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:31:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "44"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 100 not found.\"\n}"
+				},
+				{
+					"name": "GET Country <country_id=122>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AuthorID\": 4,\r\n    \"Description\": \"The first Harry Potter book\",\r\n    \"Genre\": \"Updated Genre\",\r\n    \"Price\": 20.99,\r\n    \"Publication_Year\": 19972,\r\n    \"Rating\": 4.9,\r\n    \"Title\": \"Updated Title\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/country/122",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"country",
+								"122"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:32:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "44"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 122 not found.\"\n}"
+				},
+				{
+					"name": "GET Discount <discount_id=50>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/discount/50",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"discount",
+								"50"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:35:47 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 50 not found.\"\n}"
+				},
+				{
+					"name": "GET Review <_id=678504b8c922c2024bb787ef6>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/reviews/678504b8c922c2024bb787ef6",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"reviews",
+								"678504b8c922c2024bb787ef6"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:36:24 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "29"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Review not found\"\n}"
+				},
+				{
+					"name": "GET Review <book_id=0012>",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/reviews/book/0012",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"reviews",
+								"book",
+								"0012"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:37:07 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"No reviews found for this book\"\n}"
+				}
+			]
+		},
+		{
+			"name": "ADD new User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "To Post/Push in Json formate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"ahmed@gmail.com\",\r\n        \"Password\": \"password123\",\r\n        \"Role\": \"customer\",\r\n        \"UserID\": 1,\r\n        \"UserName\": \"Ahmed Hesham TWO\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add new User with wrong username formate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"ahmednew@gmail.com\",\r\n        \"Password\": \"password123\",\r\n        \"Role\": \"customer\",\r\n        \"UserID\": 1,\r\n        \"UserName\": \"Ahmed Hesham 2\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "BAD REQUEST",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:47:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "85"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"The 'UserName' field must only contain alphabetic characters and spaces.\"\n}"
+				},
+				{
+					"name": "Add new User with repeated email",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"ahmed@gmail.com\",\r\n        \"Password\": \"password123\",\r\n        \"Role\": \"customer\",\r\n        \"UserID\": 1,\r\n        \"UserName\": \"Ahmed Hesham TWO\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "BAD REQUEST",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:50:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Email already exists. Please use a unique email.\"\n}"
+				},
+				{
+					"name": "Add new User with missing Fields",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"ahmednew@gmail.com\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:51:23 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "64"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Missing required field(s): UserName, Password, Role\"\n}"
+				},
+				{
+					"name": "Add new User (successfully Created)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"newnewnew@gmail.com\",\r\n        \"Password\": \"password123\",\r\n        \"Role\": \"customer\",\r\n        \"UserName\": \"New Name Two\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 16:52:26 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"User created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "ADD new Author",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "To Post/Push in Json formate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"ahmed@gmail.com\",\r\n        \"Password\": \"password123\",\r\n        \"Role\": \"customer\",\r\n        \"UserID\": 1,\r\n        \"UserName\": \"Ahmed Hesham TWO\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add new Author with missing Fields",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Bio\": \"Egyptian novelist, Nobel Prize winner\",\r\n    \"Birth_Date\": \"1911-12-11\",\r\n    \"CountryID\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/authors",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 17:01:35 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Missing required field(s): First_Name, Last_Name\"\n}"
+				},
+				{
+					"name": "Add new Author  (successfully Created)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Bio\": \"Egyptian novelist, Nobel Prize winner\",\r\n    \"Birth_Date\": \"1911-12-11\",\r\n    \"CountryID\": 1,\r\n    \"First_Name\": \"Ahmed\",\r\n    \"Last_Name\": \"Mahmoud\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/authors",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 17:00:48 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Author created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "ADD new Sale",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "To Post/Push in Json formate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"ahmed@gmail.com\",\r\n        \"Password\": \"password123\",\r\n        \"Role\": \"customer\",\r\n        \"UserID\": 1,\r\n        \"UserName\": \"Ahmed Hesham TWO\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add new Sale with missing Fields",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Sale_Date\": \"2025-01-03\",\r\n    \"Sale_Quantity\": 7,\r\n    \"Total_Price\": 111.93,\r\n    \"UserID\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 17:03:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "57"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Missing required field(s): BookID, CountryID\"\n}"
+				},
+				{
+					"name": "Add new Sale  (successfully Created)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BookID\": 3,\r\n    \"CountryID\": 3,\r\n    \"Sale_Date\": \"2025-01-03\",\r\n    \"Sale_Quantity\": 8,\r\n    \"Total_Price\": 120.93,\r\n    \"UserID\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales"
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 17:05:17 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Sale created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "ADD new Book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "To Post/Push in Json formate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"ahmed@gmail.com\",\r\n        \"Password\": \"password123\",\r\n        \"Role\": \"customer\",\r\n        \"UserID\": 1,\r\n        \"UserName\": \"Ahmed Hesham TWO\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add new Book with missing Fields",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AuthorID\": 4,\r\n    \"Description\": \"The first Harry Potter book\",\r\n    \"Genre\": \"Comedy 12 12\",\r\n    \"ISBN\": \"155092989022\",\r\n    \"Price\": 20.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/books",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 17:14:57 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "71"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Missing required field(s): Title, Publication_Year, Rating\"\n}"
+				},
+				{
+					"name": "Add new Book  (successfully Created)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AuthorID\": 4,\r\n    \"Description\": \"The first Harry Potter book\",\r\n    \"Genre\": \"Comedy 12 12\",\r\n    \"ISBN\": \"155092989022\",\r\n    \"Price\": 20.99,\r\n    \"Publication_Year\": 19972,\r\n    \"Rating\": 4.9,\r\n    \"Title\": \"temp\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/books",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 17:15:58 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Book created successfully\"\n}"
+				},
+				{
+					"name": "Add new Book with Unique constraint ISBN",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AuthorID\": 4,\r\n    \"Description\": \"The first Harry Potter book\",\r\n    \"Genre\": \"Comedy 12 12\",\r\n    \"ISBN\": \"155092989022\",\r\n    \"Price\": 20.99,\r\n    \"Publication_Year\": 19972,\r\n    \"Rating\": 4.9,\r\n    \"Title\": \"temp\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/books",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "INTERNAL SERVER ERROR",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 17:18:20 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"UNIQUE constraint failed: Books.ISBN\"\n}"
+				},
+				{
+					"name": "Add new Book with missing Fields Copy",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AuthorID\": 4,\r\n    \"Description\": \"The first Harry Potter book\",\r\n    \"Genre\": \"Comedy 12 12\",\r\n    \"ISBN\": \"155092989022\",\r\n    \"Price\": 20.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/books",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 17:14:57 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "71"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Missing required field(s): Title, Publication_Year, Rating\"\n}"
+				}
+			]
+		},
+		{
+			"name": "ADD new Inventory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "To Post/Push in Json formate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"ahmed@gmail.com\",\r\n        \"Password\": \"password123\",\r\n        \"Role\": \"customer\",\r\n        \"UserID\": 1,\r\n        \"UserName\": \"Ahmed Hesham TWO\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add new Inventory with missing Fields",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Stock_Quantity\": 20,\r\n    \"Warehouse_Location\": \"Warehouse J\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/inventory",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:00:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "71"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Missing required field(s): BookID, Restock_Date, CountryID\"\n}"
+				},
+				{
+					"name": "Add new Inventory  (successfully Created)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BookID\": 10,\r\n    \"Restock_Date\": \"2025-02-05\",\r\n    \"Stock_Quantity\": 20,\r\n    \"Warehouse_Location\": \"Warehouse J\",\r\n    \"CountryID\" : 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/inventory",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 17:54:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Inventory created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "ADD new Country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "To Post/Push in Json formate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"ahmed@gmail.com\",\r\n        \"Password\": \"password123\",\r\n        \"Role\": \"customer\",\r\n        \"UserID\": 1,\r\n        \"UserName\": \"Ahmed Hesham TWO\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add new Country with missing Fields",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Country_Name\": \"Egypt\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/country",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"country"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:02:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "46"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Missing required field(s): Region\"\n}"
+				},
+				{
+					"name": "Add new Country (successfully Created)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Country_Name\": \"Argentine\",\r\n    \"Region\": \"South America\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/country",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"country"
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:03:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Country created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "ADD new Discount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "To Post/Push in Json formate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"ahmed@gmail.com\",\r\n        \"Password\": \"password123\",\r\n        \"Role\": \"customer\",\r\n        \"UserID\": 1,\r\n        \"UserName\": \"Ahmed Hesham TWO\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add new Discount with missing Fields",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BookID\": 5,\r\n    \"Created_At\": \"2025-01-10\",\r\n    \"Description\": \"Black Friday \",\r\n    \"DiscountID\": 5,\r\n    \"UserID\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/discount",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"discount"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:06:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "67"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Missing required field(s): Value, Valid_From, Valid_To\"\n}"
+				},
+				{
+					"name": "Add new Discount  (successfully Created)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BookID\": 5,\r\n    \"Created_At\": \"2025-01-10\",\r\n    \"Description\": \"New Discount \",\r\n    \"DiscountID\": 5,\r\n    \"UserID\": 5,\r\n    \"Valid_From\": \"2025-01-10\",\r\n    \"Valid_To\": \"2025-01-25\",\r\n    \"Value\": 0.3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/discount",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"discount"
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:06:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "44"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Discount created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "ADD new Review",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "To Post/Push in Json formate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"CountryID\": 1,\r\n        \"Created_At\": \"2025-01-11 01:50:50\",\r\n        \"Email\": \"ahmed@gmail.com\",\r\n        \"Password\": \"password123\",\r\n        \"Role\": \"customer\",\r\n        \"UserID\": 1,\r\n        \"UserName\": \"Ahmed Hesham TWO\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a new Review",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BookID\": 5,\r\n    \"Created_At\": \"2025-01-10\",\r\n    \"Description\": \"Black Friday \",\r\n    \"DiscountID\": 5,\r\n    \"UserID\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/discount",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"discount"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:06:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "67"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Missing required field(s): Value, Valid_From, Valid_To\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete data exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/info?id=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"info"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": [
+				{
+					"name": "Delete user<user_id=21>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/21",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"21"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:26:44 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 21 deleted successfully.\"\n}"
+				},
+				{
+					"name": "Delete Author <author_id=8>>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/authors/8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"authors",
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:26:22 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 8 deleted successfully.\"\n}"
+				},
+				{
+					"name": "Delete Sale <sale_id=14>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales/14",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales",
+								"14"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:27:44 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 14 deleted successfully.\"\n}"
+				},
+				{
+					"name": "Delete Book <book_id=13>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/books/13",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"books",
+								"13"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:28:35 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 13 deleted successfully.\"\n}"
+				},
+				{
+					"name": "Delete Inventory <inventory_id=13>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/inventory/13",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory",
+								"13"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:29:32 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 13 deleted successfully.\"\n}"
+				},
+				{
+					"name": "Delete Country <country_id=13>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/country/12",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"country",
+								"12"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:31:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 12 deleted successfully.\"\n}"
+				},
+				{
+					"name": "Delete Discount <discount_id=9>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/discount/9",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"discount",
+								"9"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:32:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 9 deleted successfully.\"\n}"
+				},
+				{
+					"name": "Delete Review <review_id=678504b8c95c2024bb787ef7>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/reviews/678504b8c95c2024bb787ef7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"reviews",
+								"678504b8c95c2024bb787ef7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 20:03:50 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Review deleted successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete data not exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/info?id=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"info"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": [
+				{
+					"name": "Delete user<user_id=21>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/21",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"21"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:56:54 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 21 not found.\"\n}"
+				},
+				{
+					"name": "Delete Author <author_id=8>>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/authors/8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"authors",
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:26:22 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 8 deleted successfully.\"\n}"
+				},
+				{
+					"name": "Delete Sale <sale_id=14>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales/14",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales",
+								"14"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:58:00 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 14 not found.\"\n}"
+				},
+				{
+					"name": "Delete Book <book_id=13>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/books/13",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"books",
+								"13"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:59:00 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 13 not found.\"\n}"
+				},
+				{
+					"name": "Delete Inventory <inventory_id=13>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/inventory/13",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory",
+								"13"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:59:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 13 not found.\"\n}"
+				},
+				{
+					"name": "Delete Country <country_id=13>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/country/12",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"country",
+								"12"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 20:01:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 12 not found.\"\n}"
+				},
+				{
+					"name": "Delete Discount <discount_id=9>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/discount/9",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"discount",
+								"9"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 20:02:02 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Record with ID 9 not found.\"\n}"
+				},
+				{
+					"name": "Delete Review <review_id=67854a817dcf2365b70ef282>",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/reviews/6786b96bfb3e74ba5d395c20",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"reviews",
+								"6786b96bfb3e74ba5d395c20"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 20:03:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Review not found or failed to delete\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Records",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "To Read all the Books in json formate",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "To Post/Push in Json formate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"BookID\": 3,\r\n    \"CountryID\": 2,\r\n    \"Sale_Date\": \"2025-01-03\",\r\n    \"Sale_Quantity\": 722,\r\n    \"Total_Price\": 111.93,\r\n    \"UserID\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/sales/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"sales",
+						"4"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update User <user_id=20>",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"Email\": \"updated2@gmail.com\",\r\n    \"UserName\": \"updated Name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/20",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"20"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:37:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"User with ID 20 updated successfully.\"\n}"
+				},
+				{
+					"name": "Update Author <author_id=9>",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"First_Name\": \"Updated \",\r\n    \"Bio\" : \"Updated Bio\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/authors/9",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"authors",
+								"9"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:39:40 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Author with ID 9 updated successfully.\"\n}"
+				},
+				{
+					"name": "Update Sale <sale_id=13>",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Total_Price\": 12,\r\n    \"Sale_Quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales/13",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales",
+								"13"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:41:52 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Sale with ID 13 updated successfully.\"\n}"
+				},
+				{
+					"name": "Update Book <book_id=10>",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BookID\": 3,\r\n    \"CountryID\": 2,\r\n    \"Sale_Date\": \"2025-01-03\",\r\n    \"Sale_Quantity\": 722,\r\n    \"Total_Price\": 111.93,\r\n    \"UserID\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales",
+								"4"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Update Inventory <inventory_id=12>",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Warehouse_Location\": \"Updated Warehouse_Location\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/inventory/12",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory",
+								"12"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:46:11 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "57"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Inventory with ID 12 updated successfully.\"\n}"
+				},
+				{
+					"name": "Update Country <country_id=11>",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Country_Name\": \"Suadia Arabia Updated\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/country/11",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"country",
+								"11"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:47:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "57"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Inventory with ID 11 updated successfully.\"\n}"
+				},
+				{
+					"name": "Update Discount <discount_id=8>",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Description\": \"New Summer Sale\",\r\n    \"Value\": 0.8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/discount/8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"discount",
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.13.1"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jan 2025 19:49:24 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "56"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Inventory with ID 8 updated successfully.\"\n}"
+				},
+				{
+					"name": "Update Review <review_id=67854abb7dcf2365b70ef283>",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": "To Read all the Books in json formate",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "To Post/Push in Json formate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BookID\": 3,\r\n    \"CountryID\": 2,\r\n    \"Sale_Date\": \"2025-01-03\",\r\n    \"Sale_Quantity\": 722,\r\n    \"Total_Price\": 111.93,\r\n    \"UserID\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/sales/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"sales",
+								"4"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}

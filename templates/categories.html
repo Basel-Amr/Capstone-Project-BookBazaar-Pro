@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Book Categories{% endblock %}
+
+{% block content %}
+<div class="categories">
+    <h1>Book Categories Overview</h1>
+    
+    <!-- Summary -->
+    <div class="summary">
+        <h3>Summary</h3>
+        <p>Total Number of Categories (Genres): <strong>{{ total_genres }}</strong></p>
+        <p>Total Number of Books: <strong>{{ total_books }}</strong></p>
+    </div>
+
+    <!-- Categories Pie Chart -->
+    <div class="chart-container">
+        <h2>Book Categories Distribution (by Genre)</h2>
+        <div>
+            {{ categories_pie_chart | safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

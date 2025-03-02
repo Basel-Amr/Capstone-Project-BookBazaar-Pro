@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Users - Sprints API{% endblock %}
+
+{% block content %}
+<h1>Countries  List</h1>
+
+<style>
+    /* Table Styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        margin-bottom: 20px;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        font-size: 1.1em;
+    }
+    th {
+    background-color: #333; /* Dark Gray */
+    color: #fff;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    /* Column-specific width */
+    td, th {
+        word-wrap: break-word;
+        max-width: 200px;
+    }
+
+    /* Responsive Table */
+    @media (max-width: 768px) {
+        table, th, td {
+            font-size: 0.9em;
+        }
+        td, th {
+            padding: 10px;
+        }
+    }
+
+    /* Footer Row */
+    .table-footer {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    /* Scrollable Table for large data */
+    .table-container {
+        overflow-x: auto;
+    }
+</style>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Country_Name</th>
+                <th>Region</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for country in countries %}
+            <tr>
+                <td>{{ country.CountryID }}</td>
+                <td>{{ country.Country_Name }}</td>
+                <td>{{ country.Region }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr class="table-footer">
+                <td colspan="7">Total Countries: {{ countries|length }}</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+{% endblock %}

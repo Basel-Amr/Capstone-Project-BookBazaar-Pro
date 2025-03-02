@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>Dashboard</h1>
+
+    <!-- Summary Section -->
+    <div class="summary">
+        <h2>Summary Overview</h2>
+        <div class="summary-cards">
+            <div class="summary-card">
+                <i class="fas fa-users"></i>
+                <div class="summary-card-content">
+                    <h3>Total Number of Authors</h3>
+                    <p>{{ total_authors }}</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <i class="fas fa-book"></i>
+                <div class="summary-card-content">
+                    <h3>Total Number of Books</h3>
+                    <p>{{ total_books }}</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <i class="fas fa-user-friends"></i>
+                <div class="summary-card-content">
+                    <h3>Total Number of Users</h3>
+                    <p>{{ total_users }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sales Trend Chart -->
+    <div class="chart-container">
+        <h2>Sales Trends Over Time (Daily)</h2>
+        <div>
+            {{ sales_trends_chart | safe }}
+        </div>
+    </div>
+
+    <!-- Best Selling Books Chart -->
+    <div class="chart-container">
+        <h2>Top-Selling Books (Based on Quantity Sold)</h2>
+        <div>
+            {{ best_selling_books_chart | safe }}
+        </div>
+    </div>
+
+    <!-- Top Authors Chart -->
+    <div class="chart-container">
+        <h2>Top Performing Authors Based on Sales and Rating</h2>
+        <div>
+            {{ top_authors_chart | safe }}
+        </div>
+    </div>
+
+    <!-- Geographical Distribution of Authors by Nationality -->
+    <div class="chart-container">
+        <h2>Geographical Distribution of Authors by Nationality</h2>
+        <div>
+            {{ Geographical_Distribution_of_Authors_by_Nationality | safe }}
+        </div>
+    </div>
+	
+</div>
+
+{% endblock %}
+

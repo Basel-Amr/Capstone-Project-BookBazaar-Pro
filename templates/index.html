@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="hero-section">
+        <h1>Welcome to BookBazaar</h1>
+        <p>Your one-stop destination for discovering, borrowing, and lending books with ease. BookBazaar is designed to bring book lovers together in a vibrant online community.</p>
+    </div>
+
+    <div id="about" class="about-section">
+        <h2>About BookBazaar</h2>
+        <p>BookBazaar is an innovative platform developed by Team 1 at Sprints. Our goal is to provide an easy-to-use and dynamic space for users to explore a vast collection of books. Whether you're an avid reader, a casual bookworm, or someone looking to borrow or lend books, BookBazaar is the place for you.</p>
+        <p>Our mission is to create a seamless and engaging experience for users by offering a wide range of book genres, including fiction, non-fiction, science, history, and more. BookBazaar also aims to connect people with similar interests through its collaborative features, making it a hub for book lovers everywhere.</p>
+        <p>Join us on our journey to transform the way we interact with books. Whether you're looking to borrow a book, lend one, or discover something new, BookBazaar has something for everyone.</p>
+    </div>
+
+    <style>
+        /* Hero Section */
+        .hero-section {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .hero-section h1 {
+            font-size: 3em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .hero-section p {
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            text-align: center;
+        }
+        .about-section h2 {
+            font-size: 2.5em;
+            color: #333;
+        }
+        .about-section p {
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 20px;
+        }
+        .about-section p:first-of-type {
+            margin-top: 30px;
+        }
+    </style>
+{% endblock %}

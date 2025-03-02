@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Reviews - Sprints API{% endblock %}
+
+{% block content %}
+<h1>Reviews List</h1>
+
+<style>
+    /* Table Styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        margin-bottom: 20px;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        font-size: 1.1em;
+    }
+    th {
+        background-color: #333; /* Dark Gray */
+        color: #fff;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    /* Column-specific width */
+    td, th {
+        word-wrap: break-word;
+        max-width: 200px;
+    }
+
+    /* Responsive Table */
+    @media (max-width: 768px) {
+        table, th, td {
+            font-size: 0.9em;
+        }
+        td, th {
+            padding: 10px;
+        }
+    }
+
+    /* Footer Row */
+    .table-footer {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    /* Scrollable Table for large data */
+    .table-container {
+        overflow-x: auto;
+    }
+</style>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>User</th>
+                <th>Rating</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rev in reviews %}
+            <tr>
+                <td>{{ rev._id["$oid"] if rev._id is mapping else rev._id }}</td>
+                <td>{{ rev.title }}</td>
+                <td>{{ rev.author }}</td>
+                <td>{{ rev.user }}</td>
+                <td>{{ rev.rating }}</td>
+                <td>{{ rev.comment }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr class="table-footer">
+                <td colspan="6">Total Reviews: {{ reviews|length }}</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+{% endblock %}

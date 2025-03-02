@@ -1,0 +1,40 @@
+[
+    {
+        "_id": "678504b8c95c2024bb787ef4",
+        "book_id": "002",
+        "title": "Artificial Intelligence: A New Synthesis",
+        "author": "Nils J. Nilsson",
+        "user": "Noha",
+        "rating": 4,
+        "comment": "Comprehensive coverage of AI topics, but can be dense at times."
+    },
+    {
+        "_id": "678504b8c95c2024bb787ef5",
+        "book_id": "003",
+        "title": "AI Superpowers: China, Silicon Valley, and the New World Order",
+        "author": "Kai-Fu Lee",
+        "user": "Sarah",
+        "rating": 5,
+        "comment": "Insightful discussion on AI's global impact and future trends."
+    },
+    {
+        "_id": "678504b8c95c2024bb787ef6",
+        "book_id": "004",
+        "title": "Deep Learning",
+        "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+        "user": "Noha",
+        "rating": 5,
+        "comment": "A must-read for anyone diving deep into neural networks and deep learning."
+    },
+    {
+        "_id": "67854abb7dcf2365b70ef283",
+        "book_id": "001",
+        "comment": "Updated Comment",
+        "rating": 42,
+        "author": "Updated Author",
+        "title": "AI Fundamentals",
+        "user": "Jane",
+        "Comment": "Updated Comment",
+        "Author": "Updated Author"
+    }
+]

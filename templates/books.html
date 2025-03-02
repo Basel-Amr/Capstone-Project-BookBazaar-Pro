@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}Users - Sprints API{% endblock %}
+
+{% block content %}
+<h1>Books  List</h1>
+
+<style>
+    /* Table Styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        margin-bottom: 20px;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        font-size: 1.1em;
+    }
+    th {
+    background-color: #333; /* Dark Gray */
+    color: #fff;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    /* Column-specific width */
+    td, th {
+        word-wrap: break-word;
+        max-width: 200px;
+    }
+
+    /* Responsive Table */
+    @media (max-width: 768px) {
+        table, th, td {
+            font-size: 0.9em;
+        }
+        td, th {
+            padding: 10px;
+        }
+    }
+
+    /* Footer Row */
+    .table-footer {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    /* Scrollable Table for large data */
+    .table-container {
+        overflow-x: auto;
+    }
+</style>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Publication_Year</th>
+                <th>ISBN</th>
+                <th>Price</th>
+                <th>Rating</th>
+                <th>Description</th>
+                <th>AuthorID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in Books %}
+            <tr>
+                <td>{{ book.BookID }}</td>
+                <td>{{ book.Title }}</td>
+                <td>{{ book.Genre }}</td>
+                <td>{{ book.Publication_Year }}</td>
+                <td>{{ book.ISBN }}</td>
+                <td>{{ book.Price }}</td>
+                <td>{{ book.Rating }}</td>
+                <td>{{ book.Description }}</td>
+                <td>{{ book.AuthorID }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr class="table-footer">
+                <td colspan="7">Total Books: {{ Books|length }}</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+{% endblock %}
