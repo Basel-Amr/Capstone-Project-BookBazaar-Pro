@@ -1,4 +1,5 @@
-# BookBazaar Library Management System
+# 🌟BookBazaar Library Management System
+![Logo](static/sprints_logo.png)
 
 ## Overview
 BookBazaar is a robust and scalable library management system designed to streamline operations for managing books, users, sales, inventory, and reviews. Built using the **Model-View-Controller (MVC)** architecture, the project incorporates **Flask** for API development, **SQLite** for data persistence, and a user-friendly interface for interaction.
@@ -75,8 +76,7 @@ BookBazaar/
 ### 2. Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Basel-Amr/Capstone-Project-BookBazaar-Pro.git
-   cd bookbazaar
+   git clone https://github.com/your-repo/bookbazaar.git
    ```
 2. Configure the database:
    - Ensure the SQLite database file is correctly referenced in `db_config.py`.
